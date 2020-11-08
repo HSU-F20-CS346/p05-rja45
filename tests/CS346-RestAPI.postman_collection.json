@@ -1,0 +1,126 @@
+{
+	"info": {
+		"_postman_id": "e3b89842-d60f-4ce8-991f-3de4fb40594d",
+		"name": "CS346-RestAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetArtist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "69d14774-cbfe-4bb5-8437-c03f3c95e30c",
+						"exec": [
+							"pm.test(\"should get artist back\", function () {\r",
+							"    pm.response.to.not.be.error;\r",
+							"\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.artistId).to.eql(4);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44386/api/artist/4",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44386",
+					"path": [
+						"api",
+						"artist",
+						"4"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "GetArtist",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44386/api/artist/4",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44386",
+							"path": [
+								"api",
+								"artist",
+								"4"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Length",
+							"value": "108"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Server",
+							"value": "Microsoft-IIS/10.0"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "ASP.NET"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 30 Oct 2020 18:23:19 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"artistId\": 4,\n    \"name\": \"Alanis Morissette\",\n    \"albums\": [\n        {\n            \"albumId\": 6,\n            \"title\": \"Jagged Little Pill\",\n            \"artistId\": 4\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "PostArtist",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Adam Carter\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44386/api/artist/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44386",
+					"path": [
+						"api",
+						"artist",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
