@@ -43,6 +43,60 @@ namespace Example_RestAPI.Controllers
             return artist;
         }
 
+<<<<<<< Updated upstream
+=======
+        // GET: api/Artist/search/byAlbum/<albumName>
+        [HttpGet("search/byAlbum/{albumName}")]
+        public async Task<ActionResult<Artist>> GetArtistByAlbum(string albumName)
+        {
+            //use Include to have EF also query Album information.  Leaving it out makes the field NULL
+            var artist = await _context.Artists
+                .Include("Albums")
+                .Where(a => a.Albums.Any(x => x.Title.ToLower() == albumName.ToLower()))
+                .FirstOrDefaultAsync();
+
+            if (artist == null)
+            {
+                return NotFound();
+            }
+
+            return artist;
+        }
+
+        //GET: api/Artist/<albumName>
+        //[HttpGet("search/byGenre/{genreName}")]
+        //public async Task<ActionResult<Artist>> GetArtistByGenre(string genreName)
+        //{
+        //    //use Include to have EF also query Album information.Leaving it out makes the field NULL
+        //    var artist = await _context.Artists
+        //        .Include("Albums")
+        //        .Include("Tracks")
+        //        .Include("Genres")
+        //        .Where()
+
+
+
+
+        //, _context.Albums, _context.Tracks, _context.Genres
+        //                where item.
+
+        //Select artist.artistID
+        //                from artists, albums, tracks, genres
+        //                where Artist.ArtistID == Album.ArtistID and
+        //                    Album.ArtistID == Tracks.ArtistID and
+        //                    Tracks.GenreID == Genres.genreID and
+        //                    Genre.Name == genreName;
+
+
+        //    if (artist == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return artist;
+        //}
+
+>>>>>>> Stashed changes
         // PUT: api/Artist/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
