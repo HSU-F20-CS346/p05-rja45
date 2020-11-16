@@ -44,7 +44,10 @@ namespace Example_RestAPI.Controllers
         }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
         // GET: api/Artist/search/byAlbum/<albumName>
         [HttpGet("search/byAlbum/{albumName}")]
         public async Task<ActionResult<Artist>> GetArtistByAlbum(string albumName)
