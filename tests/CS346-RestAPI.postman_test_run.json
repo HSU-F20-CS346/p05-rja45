@@ -1,0 +1,323 @@
+{
+	"id": "19a66c81-cbd3-4b06-a6fd-e4051966110e",
+	"name": "CS346-RestAPI",
+	"timestamp": "2020-11-16T04:20:03.910Z",
+	"collection_id": "c21929ac-45d6-4828-9597-a622f78be6c8",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 7,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "bef8229d-0503-4f2e-b98a-01f71f9246c8",
+			"name": "ReadArtist",
+			"url": "https://localhost:44386/api/artist/4",
+			"time": 136,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"should get artist back": true
+			},
+			"testPassFailCounts": {
+				"should get artist back": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				136
+			],
+			"allTests": [
+				{
+					"should get artist back": true
+				}
+			]
+		},
+		{
+			"id": "2c7d4663-64a5-4a56-a27a-c04c8e9e864a",
+			"name": "CreateArtist",
+			"url": "https://localhost:44386/api/artist/",
+			"time": 377,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				377
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "6cbd659f-de8b-4596-a7a3-7f64f586fa4a",
+			"name": "UpdateArtist",
+			"url": "https://localhost:44386/api/artist/276",
+			"time": 30,
+			"responseCode": {
+				"code": 415,
+				"name": "Unsupported Media Type"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				30
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "746e248a-d7df-444d-aad4-40113a9644ea",
+			"name": "DeleteArtist",
+			"url": "https://localhost:44386/api/artist/276",
+			"time": 41,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				41
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "f9846af8-956b-4d21-b257-252cf661d406",
+			"name": "SearchTest1.1",
+			"url": "https://localhost:44386/api/artist/search/byGenre/Rock",
+			"time": 33,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				33
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "bbea3678-23cb-4454-b5bc-8b3d2fc8918b",
+			"name": "SearchTest1.2",
+			"url": "https://localhost:44386/api/artist/search/byAlbum/Facelift",
+			"time": 50,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"response is ok": true
+			},
+			"testPassFailCounts": {
+				"response is ok": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				50
+			],
+			"allTests": [
+				{
+					"response is ok": true
+				}
+			]
+		},
+		{
+			"id": "90aa42f5-be7f-4d19-81bd-412787d9346d",
+			"name": "SearchTest2.1",
+			"url": "https://localhost:44386/api/album/search/byArtist/Accept",
+			"time": 42,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"response is ok": true
+			},
+			"testPassFailCounts": {
+				"response is ok": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				42
+			],
+			"allTests": [
+				{
+					"response is ok": true
+				}
+			]
+		},
+		{
+			"id": "f6d18d46-fe90-41f3-bd10-4071832a9f68",
+			"name": "SearchTest2.2",
+			"url": "https://localhost:44386/api/album/search/byGenre/Rock",
+			"time": 102,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"response is ok": true
+			},
+			"testPassFailCounts": {
+				"response is ok": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				102
+			],
+			"allTests": [
+				{
+					"response is ok": true
+				}
+			]
+		},
+		{
+			"id": "505c7b58-650d-4979-9156-2a76aa786000",
+			"name": "SearchTest3.1 ",
+			"url": "https://localhost:44386/api/album/search/byArtist/Accept",
+			"time": 65,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"response is ok": true
+			},
+			"testPassFailCounts": {
+				"response is ok": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				65
+			],
+			"allTests": [
+				{
+					"response is ok": true
+				}
+			]
+		},
+		{
+			"id": "f5cb2eeb-909a-4961-953a-bb410d23e476",
+			"name": "SearchTest3.2",
+			"url": "https://localhost:44386/api/track/search/byAlbum/Facelift",
+			"time": 45,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"response is ok": true
+			},
+			"testPassFailCounts": {
+				"response is ok": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				45
+			],
+			"allTests": [
+				{
+					"response is ok": true
+				}
+			]
+		},
+		{
+			"id": "525d2bd1-eea8-41c7-b91d-674f3a89acdd",
+			"name": "SearchTest3.3",
+			"url": "https://localhost:44386/api/track/search/byGenre/Rock",
+			"time": 140,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"response is ok": true
+			},
+			"testPassFailCounts": {
+				"response is ok": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				140
+			],
+			"allTests": [
+				{
+					"response is ok": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 1061,
+	"collection": {
+		"requests": [
+			{
+				"id": "bef8229d-0503-4f2e-b98a-01f71f9246c8",
+				"method": "GET"
+			},
+			{
+				"id": "2c7d4663-64a5-4a56-a27a-c04c8e9e864a",
+				"method": "POST"
+			},
+			{
+				"id": "6cbd659f-de8b-4596-a7a3-7f64f586fa4a",
+				"method": "PUT"
+			},
+			{
+				"id": "746e248a-d7df-444d-aad4-40113a9644ea",
+				"method": "DELETE"
+			},
+			{
+				"id": "f9846af8-956b-4d21-b257-252cf661d406",
+				"method": "GET"
+			},
+			{
+				"id": "bbea3678-23cb-4454-b5bc-8b3d2fc8918b",
+				"method": "GET"
+			},
+			{
+				"id": "90aa42f5-be7f-4d19-81bd-412787d9346d",
+				"method": "GET"
+			},
+			{
+				"id": "f6d18d46-fe90-41f3-bd10-4071832a9f68",
+				"method": "GET"
+			},
+			{
+				"id": "505c7b58-650d-4979-9156-2a76aa786000",
+				"method": "GET"
+			},
+			{
+				"id": "f5cb2eeb-909a-4961-953a-bb410d23e476",
+				"method": "GET"
+			},
+			{
+				"id": "525d2bd1-eea8-41c7-b91d-674f3a89acdd",
+				"method": "GET"
+			}
+		]
+	}
+}
