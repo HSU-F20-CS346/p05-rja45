@@ -21,12 +21,15 @@ namespace Example_RestAPI.Models
         //Specifies that AlbumId is a FK for the Albums table
         [ForeignKey("Genre")]
         public int GenreID { get; set; }
+        public virtual Genre Genre { get; set; }
 
         [ForeignKey("Album")]
         public int AlbumID { get; set; } 
+        public virtual Album Album { get; set; }
         
         [ForeignKey("Media_Type")]
         public int MediaTypeID { get; set; }
+        public virtual Media_type Media_type { get; set; }
 
         [ForeignKey("TrackID")]
         public virtual ICollection<Invoice_item> Invoice_Items { get; set; }

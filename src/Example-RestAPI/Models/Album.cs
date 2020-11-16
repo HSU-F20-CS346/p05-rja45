@@ -21,6 +21,8 @@ namespace Example_RestAPI.Models
         //be sure to mark any FK objects as virtual
         public virtual Artist Artist { get; set; }
 
+        [ForeignKey("AlbumID")]
+        public virtual ICollection<Track> Tracks { get; set; }
 
     }
 }

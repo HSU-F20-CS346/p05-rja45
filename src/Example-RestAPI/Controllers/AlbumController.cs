@@ -40,6 +40,51 @@ namespace Example_RestAPI.Controllers
             return album;
         }
 
+        [HttpGet("search/{searchby}/{term}")]
+        public async Task<ActionResult<List<Album>>> SearchTracks(string searchby, string term)
+        {
+            string[] sanitized = term.Split("%2F");
+
+            if (sanitized.Length > 1)
+            {
+                term = "";
+                foreach (string s in sanitized)
+                {
+                    term += s + "/";
+                }
+                term = term.Substring(0, term.Length - 1);
+            }
+
+            if (searchby.ToLower() == "byartist")
+            {
+                var albums = await _context.Albums
+                    .Where(a => a.Artist.Name.ToLower() == term.ToLower()).ToListAsync<Album>();
+                if (albums == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    return albums;
+                }
+            }
+            if (searchby.ToLower() == "bygenre")
+            {
+                var tracks = await _context.Albums
+                    .Where(a => a.Tracks.Any(b => b.Genre.Name.ToLower() == term.ToLower())).ToListAsync<Album>();
+                if (tracks == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    return tracks;
+                }
+            }
+            else return NotFound();
+        }
+
+
         // PUT: api/Album/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.

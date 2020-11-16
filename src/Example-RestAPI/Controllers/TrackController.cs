@@ -41,6 +41,64 @@ namespace Example_RestAPI.Controllers
             return track;
         }
 
+        [HttpGet("search/{searchby}/{term}")]
+        public async Task<ActionResult<List<Track>>> SearchTracks(string searchby, string term)
+        {
+            string[] sanitized = term.Split("%2F");
+
+            if (sanitized.Length > 1)
+            {
+                term = "";
+                foreach (string s in sanitized)
+                {
+                    term += s + "/";
+                }
+                term = term.Substring(0, term.Length - 1);
+            }
+
+            if (searchby.ToLower() == "byartist")
+            {
+                var tracks = await _context.Tracks
+                    .Where(a => a.Album.Artist.Name.ToLower() == term.ToLower()).ToListAsync<Track>();
+                if (tracks == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    return tracks;
+                }
+            }
+            if (searchby.ToLower() == "byalbum")
+            {
+                var tracks = await _context.Tracks
+                    .Where(a => a.Album.Title.ToLower() == term.ToLower()).ToListAsync<Track>();
+                if (tracks == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    return tracks;
+                }
+            }
+            if (searchby.ToLower() == "bygenre")
+            {
+                var tracks = await _context.Tracks
+                    .Where(a => a.Genre.Name.ToLower() == term.ToLower()).ToListAsync<Track>();
+                if (tracks == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    return tracks;
+                }
+            }
+            else return NotFound();
+        }
+
+
         // PUT: api/Track/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
