@@ -7,20 +7,18 @@ using System.Threading.Tasks;
 
 namespace Example_RestAPI.Models
 {
-    public class Album
+    public class Playlist
     {
         //Primary Key in DB
         [Key]
-        public int AlbumId { get; set; }
-        public string Title { get; set; }
+        public int PlaylistID { get; set; }
+        public string Name { get; set; }
 
         //Specifies that ArtistId is a FK for the Artists table
 
-        [ForeignKey("Artist")]
-        public int ArtistId { get; set; }
+        [ForeignKey("PlaylistID")]
+
         //be sure to mark any FK objects as virtual
-        public virtual Artist Artist { get; set; }
-
-
+        public virtual Playlist_track Playlist_track { get; set; }
     }
 }

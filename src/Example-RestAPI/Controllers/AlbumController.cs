@@ -9,55 +9,49 @@ using Example_RestAPI.Models;
 
 namespace Example_RestAPI.Controllers
 {
-    /// <summary>
-    /// Generated using VS2019's auto generator tool
-    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
-    public class ArtistController : ControllerBase
+    public class AlbumController : ControllerBase
     {
         ChinookContext _context = new ChinookContext();
-        public ArtistController() :base()
+        public AlbumController() : base()
         {
 
         }
 
-        // GET: api/Artist
+        // GET: api/Album
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Artist>>> GetArtists()
+        public async Task<ActionResult<IEnumerable<Album>>> GetAlbums()
         {
-            return await _context.Artists.ToListAsync();
+            return await _context.Albums.ToListAsync();
         }
 
-        // GET: api/Artist/5
+        // GET: api/Album/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Artist>> GetArtist(int id)
+        public async Task<ActionResult<Album>> GetAlbum(int id)
         {
-            //use Include to have EF also query Album information.  Leaving it out makes the field NULL
-            var artist = await _context.Artists.Include("Albums").Where(a => a.ArtistId == id).FirstOrDefaultAsync();
-            if (artist == null)
+            var album = await _context.Albums.FindAsync(id);
+            
+            if (album == null)
             {
                 return NotFound();
             }
 
-            return artist;
+            return album;
         }
 
-
-
- 
-        // PUT: api/Artist/5
+        // PUT: api/Album/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutArtist(int id, Artist artist)
+        public async Task<IActionResult> PutAlbum(int id, Album album)
         {
-            if (id != artist.ArtistId)
+            if (id != album.AlbumId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(artist).State = EntityState.Modified;
+            _context.Entry(album).State = EntityState.Modified;
 
             try
             {
@@ -65,7 +59,7 @@ namespace Example_RestAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ArtistExists(id))
+                if (!AlbumExists(id))
                 {
                     return NotFound();
                 }
@@ -78,37 +72,37 @@ namespace Example_RestAPI.Controllers
             return NoContent();
         }
 
-        // POST: api/Artist
+        // POST: api/Album
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Artist>> PostArtist(Artist artist)
+        public async Task<ActionResult<Album>> PostAlbum(Album album)
         {
-            _context.Artists.Add(artist);
+            _context.Albums.Add(album);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetArtist", new { id = artist.ArtistId }, artist);
+            return CreatedAtAction("GetAlbum", new { id = album.AlbumId }, album);
         }
 
-        // DELETE: api/Artist/5
+        // DELETE: api/Album/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Artist>> DeleteArtist(int id)
+        public async Task<ActionResult<Album>> DeleteAlbum(int id)
         {
-            var artist = await _context.Artists.FindAsync(id);
-            if (artist == null)
+            var album = await _context.Albums.FindAsync(id);
+            if (album == null)
             {
                 return NotFound();
             }
 
-            _context.Artists.Remove(artist);
+            _context.Albums.Remove(album);
             await _context.SaveChangesAsync();
 
-            return artist;
+            return album;
         }
 
-        private bool ArtistExists(int id)
+        private bool AlbumExists(int id)
         {
-            return _context.Artists.Any(e => e.ArtistId == id);
+            return _context.Albums.Any(e => e.AlbumId == id);
         }
     }
 }
