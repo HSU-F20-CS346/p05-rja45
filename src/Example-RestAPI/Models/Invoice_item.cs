@@ -19,13 +19,13 @@ namespace Example_RestAPI.Models
 
         [ForeignKey("Invoice")]
         public int InvoiceID { get; set; }
-        public virtual Invoice Invoices { get; set; }
+        public virtual Invoice Invoice { get; set; }
 
         //Specifies that AlbumId is a FK for the Albums table
         [ForeignKey("Track")]
         public int TrackID { get; set; }
 
-        public virtual Track Tracks { get; set; }
+        public virtual Track Track { get; set; }
 
 
 

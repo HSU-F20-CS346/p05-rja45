@@ -10,16 +10,15 @@ namespace Example_RestAPI.Models
     public class Playlist_track
     {
         //Primary Key in DB
-        [Key, ForeignKey("Playlist")]
+        [ForeignKey("Playlist")]
         public int PlaylistID { get; set; }
-        [Key, ForeignKey("Track")]
-        public string TrackID { get; set; }
-
-        //Specifies that ArtistId is a FK for the Artists table
-
-
-
-        //be sure to mark any FK objects as virtual
         public virtual Playlist Playlist { get; set; }
+
+        [ForeignKey("Track")]
+        public int TrackID { get; set; }
+        public virtual Track Track { get; set; }
+
+
+
     }
 }

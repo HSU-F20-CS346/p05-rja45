@@ -61,38 +61,20 @@ namespace Example_RestAPI.Controllers
             return artist;
         }
 
-        //GET: api/Artist/<albumName>
-        //[HttpGet("search/byGenre/{genreName}")]
-        //public async Task<ActionResult<Artist>> GetArtistByGenre(string genreName)
-        //{
-        //    //use Include to have EF also query Album information.Leaving it out makes the field NULL
-        //    var artist = await _context.Artists
-        //        .Include("Albums")
-        //        .Include("Tracks")
-        //        .Include("Genres")
-        //        .Where()
+        [HttpGet("Search/byGenre/{genreName}")]
+        public async Task<ActionResult<List<Artist>>> SearchArtistByGenre(string genreName)
+        {
+            var artist = await _context.Artists
+                .Where(a => a.Albums.Any(b => b.Tracks.Any(t => t.Genre.Name.ToLower() == genreName.ToLower())))
+                .ToListAsync<Artist>();
+            if (artist == null)
+            {
+                return NotFound();
+            }
+            return artist;
+        }
 
 
-
-
-        //, _context.Albums, _context.Tracks, _context.Genres
-        //                where item.
-
-        //Select artist.artistID
-        //                from artists, albums, tracks, genres
-        //                where Artist.ArtistID == Album.ArtistID and
-        //                    Album.ArtistID == Tracks.ArtistID and
-        //                    Tracks.GenreID == Genres.genreID and
-        //                    Genre.Name == genreName;
-
-
-        //    if (artist == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-
- 
         // PUT: api/Artist/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
