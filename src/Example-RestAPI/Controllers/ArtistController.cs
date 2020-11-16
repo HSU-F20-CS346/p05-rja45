@@ -43,11 +43,6 @@ namespace Example_RestAPI.Controllers
             return artist;
         }
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> Stashed changes
         // GET: api/Artist/search/byAlbum/<albumName>
         [HttpGet("search/byAlbum/{albumName}")]
         public async Task<ActionResult<Artist>> GetArtistByAlbum(string albumName)
@@ -96,10 +91,8 @@ namespace Example_RestAPI.Controllers
         //        return NotFound();
         //    }
 
-        //    return artist;
-        //}
 
->>>>>>> Stashed changes
+ 
         // PUT: api/Artist/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
